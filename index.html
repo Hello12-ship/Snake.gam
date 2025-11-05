@@ -109,7 +109,17 @@
     const emojis = ["🍎", "🍒", "🍑", "🍓", "🍊", "🥕", "🥭", "🍍", "🌽", "🥑", "🥝", "🍏", "🧀"];
 
     const eatSound = document.getElementById("eat-sound");
-    const bgMusic = document.getElementById("bg-music");
+const bgMusic = document.getElementById("bg-music");
+let soundEnabled = false;
+
+// Unlock sound on first touch/click
+document.addEventListener("click", () => {
+  if (!soundEnabled) {
+    bgMusic.play().catch(()=>{});
+    eatSound.play().catch(()=>{});
+    soundEnabled = true;
+  }
+});
 
     let snake, direction, fruits, score, speed, gameLoopInterval;
 
